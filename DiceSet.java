@@ -1,15 +1,23 @@
 public class DiceSet {
-    private int[] dice = new int[5];
+    private Die[] dice = new Die[5];
     public void rollAll(){
-
+        for(Die die : dice){
+            die.roll();
+        }
     }
-    public void rollSelected(int[] selectedDice){
-
+    public void rollSelected(){
+        for (Die die : dice) {
+            if (die.isHeld() == false) {
+                die.roll();
+            }
+        }
     }
-    public int[] getDice(){
+    public Die[] getDice(){
         return dice;
     }
     public void resetHolds(){
-
+        for (Die die : dice) {
+            die.release();
+        }
     }
 }
